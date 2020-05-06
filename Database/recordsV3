@@ -1,0 +1,278 @@
+﻿[
+  {
+    "n": {
+      "identity": 0,
+      "labels": [
+        "zona"
+      ],
+      "properties": {
+        "name": "Zona 2"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 1,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "PizzaHut",
+        "ubicacion": [
+          "zona 1",
+          "zona 3"
+        ],
+        "valoracion": "Malo",
+        "servicio": "Si",
+        "especialidad": "Comida Rapida"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 2,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "GoGreen",
+        "ubicacion": [
+          "zona 2",
+          "zona 3"
+        ],
+        "valoracion": "Regular",
+        "servicio": "No",
+        "especialidad": "Ensaladas"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 3,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "McDonalds",
+        "ubicacion": [
+          "zona 5",
+          "zona 8"
+        ],
+        "valoracion": "Malo",
+        "servicio": "Si",
+        "especialidad": "Comida Rapida"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 4,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "TacoBell",
+        "ubicacion": [
+          "zona3"
+        ],
+        "valoracion": "Bueno",
+        "servicio": "No",
+        "especialidad": "Comida Rapida"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 5,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "BurgerKing",
+        "ubicacion": [
+          "zona4"
+        ],
+        "valoracion": "Excelente",
+        "servicio": "Si",
+        "especialidad": "Comida Rapida"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 6,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "LaEstancia",
+        "ubicacion": [
+          "zona4",
+          "zona5"
+        ],
+        "valoracion": "Excelente",
+        "servicio": "Si",
+        "especialidad": "Carnes"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 7,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "PapaJohns",
+        "ubicacion": [
+          "zona4",
+          "zona6"
+        ],
+        "valoracion": "Bueno",
+        "servicio": "Si",
+        "especialidad": "Pizzas"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 8,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "Saul",
+        "ubicacion": [
+          "zona8",
+          "zona6"
+        ],
+        "valoracion": "Regular",
+        "servicio": "No",
+        "especialidad": "Postres"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 9,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "PolloCampero",
+        "ubicacion": [
+          "zona9",
+          "zona1"
+        ],
+        "valoracion": "Excelente",
+        "servicio": "Si",
+        "especialidad": "Comida Rapida"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 10,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "Panda",
+        "ubicacion": [
+          "zona10",
+          "zona18"
+        ],
+        "valoracion": "Excelente",
+        "servicio": "Si",
+        "especialidad": "Comida China"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 11,
+      "labels": [
+        "lugar"
+      ],
+      "properties": {
+        "name": "LittleCaesars",
+        "ubicacion": [
+          "zona1",
+          "zona18"
+        ],
+        "valoracion": "Bueno",
+        "servicio": "Si",
+        "especialidad": "Comida Rapida"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 12,
+      "labels": [
+        "persona"
+      ],
+      "properties": {
+        "name": "Oscar Saravia",
+        "edad": 20
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 13,
+      "labels": [
+        "persona"
+      ],
+      "properties": {
+        "name": "Bryann Alfaro",
+        "edad": 19
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 14,
+      "labels": [
+        "persona"
+      ],
+      "properties": {
+        "name": "Diego de Jesus",
+        "edad": 19
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 15,
+      "labels": [
+        "zona"
+      ],
+      "properties": {
+        "name": "Zona 11"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 16,
+      "labels": [
+        "zona"
+      ],
+      "properties": {
+        "name": "Zona 16"
+      }
+    }
+  },
+  {
+    "n": {
+      "identity": 17,
+      "labels": [
+        "zona"
+      ],
+      "properties": {
+        "name": "Zona 5"
+      }
+    }
+  }
+]

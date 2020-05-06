@@ -1,0 +1,19 @@
+﻿n
+{name:Zona 2}
+"{name:PizzaHut,ubicacion:[zona 1,zona 3],valoracion:Malo,servicio:Si,especialidad:Comida Rapida}"
+"{name:GoGreen,ubicacion:[zona 2,zona 3],valoracion:Regular,servicio:No,especialidad:Ensaladas}"
+"{name:McDonalds,ubicacion:[zona 5,zona 8],valoracion:Malo,servicio:Si,especialidad:Comida Rapida}"
+"{name:TacoBell,ubicacion:[zona3],valoracion:Bueno,servicio:No,especialidad:Comida Rapida}"
+"{name:BurgerKing,ubicacion:[zona4],valoracion:Excelente,servicio:Si,especialidad:Comida Rapida}"
+"{name:LaEstancia,ubicacion:[zona4,zona5],valoracion:Excelente,servicio:Si,especialidad:Carnes}"
+"{name:PapaJohns,ubicacion:[zona4,zona6],valoracion:Bueno,servicio:Si,especialidad:Pizzas}"
+"{name:Saul,ubicacion:[zona8,zona6],valoracion:Regular,servicio:No,especialidad:Postres}"
+"{name:PolloCampero,ubicacion:[zona9,zona1],valoracion:Excelente,servicio:Si,especialidad:Comida Rapida}"
+"{name:Panda,ubicacion:[zona10,zona18],valoracion:Excelente,servicio:Si,especialidad:Comida China}"
+"{name:LittleCaesars,ubicacion:[zona1,zona18],valoracion:Bueno,servicio:Si,especialidad:Comida Rapida}"
+"{name:Oscar Saravia,edad:20}"
+"{name:Bryann Alfaro,edad:19}"
+"{name:Diego de Jesus,edad:19}"
+{name:Zona 11}
+{name:Zona 16}
+{name:Zona 5}
