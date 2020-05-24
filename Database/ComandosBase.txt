@@ -1,0 +1,281 @@
+ ______   _______ _________ _______  ______   _______  _______  _______ 
+(  __  \ (  ___  )\__   __/(  ___  )(  ___ \ (  ___  )(  ____ \(  ____ \
+| (  \  )| (   ) |   ) (   | (   ) || (   ) )| (   ) || (    \/| (    \/
+| |   ) || (___) |   | |   | (___) || (__/ / | (___) || (_____ | (__    
+| |   | ||  ___  |   | |   |  ___  ||  __ (  |  ___  |(_____  )|  __)   
+| |   ) || (   ) |   | |   | (   ) || (  \ \ | (   ) |      ) || (      
+| (__/  )| )   ( |   | |   | )   ( || )___) )| )   ( |/\____) || (____/\
+(______/ |/     \|   )_(   |/     \||/ \___/ |/     \|\_______)(_______/                      
+
+                                                                                                                
+//Restaurantes
+create (PizzaHut:lugar {name:'PizzaHut'});
+create(GoGreen:lugar{name:"GoGreen"});
+create(McDonalds:lugar {name:"McDonalds"});
+create(TacoBell:lugar {name: "TacoBell"});
+create(BurgerKing:lugar {name: "BurgerKing"});
+create(LaEstancia:lugar {name: "LaEstancia"});
+create(PapaJohns:lugar{name: "PapaJohns"});
+create(Saul:lugar{name: 'Saul'});
+create (PolloCampero:lugar {name: "PolloCampero"});
+create(Panda:lugar{name: "Panda"});
+create(LittleCaesars:lugar {name: "LittleCaesars"});
+create(Dominos:lugar {name: "DominosPizza"});
+
+//Zonas
+create (zona1:zona {name:"Zona 1"});
+create (zona2:zona {name:"Zona 2"});
+create (zona3:zona {name:"Zona 3"});
+create (zona4:zona {name:"Zona 4"});
+create (zona5:zona {name:"Zona 5"});
+create (zona6:zona {name:"Zona 6"});
+create (zona7:zona {name:"Zona 7"});
+create (zona8:zona {name:"Zona 8"});
+create (zona9:zona {name:"Zona 9"});
+create (zona10:zona {name:"Zona 10"});
+create (zona11:zona {name:"Zona 11"});
+create (zona12:zona {name:"Zona 12"});
+create (zona13:zona {name:"Zona 13"});
+create (zona14:zona {name:"Zona 14"});
+create (zona15:zona {name:"Zona 15"});
+create (zona16:zona {name:"Zona 16"});
+create (zona17:zona {name:"Zona 17"});
+create (zona18:zona {name:"Zona 18"});
+create (zona19:zona {name:"Zona 19"});
+create (zona21:zona {name:"Zona 21"});
+create (zona22:zona {name:"Zona 22"});
+create (zona23:zona {name:"Zona 23"});
+create (zona24:zona {name:"Zona 24"});
+create (zona25:zona {name:"Zona 25"});
+
+//Ratings
+create (valor1:rating {name:"1"});
+create (valor2:rating {name:"2"});
+create (valor3:rating {name:"3"});
+create (valor4:rating {name:"4"});
+create (valor5:rating {name:"5"});
+
+//Precio
+create (bajo:precio {name:"10-150"});
+create (medio:precio {name:"150-300"});
+create (alto:precio {name:"300-500"});
+
+//Especialidades
+create (comidaRapida:especialidad {name:"Comida Rapida"});
+create (ensalada:especialidad {name:"Ensalada"});
+create (comidaChina:especialidad {name:"Comida China"});
+create (carnes:especialidad {name:"Carnes"});
+create (postres:especialidad {name:"Postres"});
+create (pizzas:especialidad {name:"Pizzas"});
+
+//Servicio Domicilio
+create (si:servicio {name:"Si"});
+create (no:servicio {name:"No"});
+
+//Match Nodes
+
+//Restaurante -> cerca de -> Zona
+match(a:lugar), (b:zona)
+where a.name = "PizzaHut" AND b.name = "Zona 2"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PizzaHut" AND b.name = "Zona 5"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "GoGreen" AND b.name = "Zona 1"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "GoGreen" AND b.name = "Zona 10"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "McDonalds" AND b.name = "Zona 10"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "McDonalds" AND b.name = "Zona 23"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "McDonalds" AND b.name = "Zona 7"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "`McDonalds" AND b.name = "Zona 15"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "TacoBell" AND b.name = "Zona 18"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "TacoBell" AND b.name = "Zona 15"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "BurgerKing" AND b.name = "Zona 16"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "BurgerKing" AND b.name = "Zona 22"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "BurgerKing" AND b.name = "Zona 1"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "LaEstancia" AND b.name = "Zona 3"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "LaEstancia" AND b.name = "Zona 15"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "LaEstancia" AND b.name = "Zona 17"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PapaJohns" AND b.name = "Zona 18"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PapaJohns" AND b.name = "Zona 25"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PapaJohns" AND b.name = "Zona 17"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Saul" AND b.name = "Zona 11"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Saul" AND b.name = "Zona 9"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Saul" AND b.name = "Zona 19"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Saul" AND b.name = "Zona 4"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Saul" AND b.name = "Zona 24"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PolloCampero" AND b.name = "Zona 9"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PolloCampero" AND b.name = "Zona 19"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PolloCampero" AND b.name = "Zona 18"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Panda" AND b.name = "Zona 13"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Panda" AND b.name = "Zona 2"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "Panda" AND b.name = "Zona 21"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "LittleCaesars" AND b.name = "Zona 1"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "LittleCaesars" AND b.name = "Zona 14"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "LittleCaesars" AND b.name = "Zona 21"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "DominosPizza" AND b.name = "Zona 6"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "DominosPizza" AND b.name = "Zona 4"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "DominosPizza" AND b.name = "Zona 8"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "DominosPizza" AND b.name = "Zona 22"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "DominosPizza" AND b.name = "Zona 8"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "DominosPizza" AND b.name = "Zona 7"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "PolloCampero" AND b.name = "Zona 12"
+create(a)-[:cerca_de]->(b)
+return a,b;
+
+match(a:lugar), (b:zona)
+where a.name = "TacoBell" AND b.name = "Zona 12"
+create(a)-[:cerca_de]->(b)
+return a,b;
