@@ -6,14 +6,15 @@ from neo4j import GraphDatabase
 graphdb = GraphDatabase.driver(uri="neo4j://localhost:7687", auth= ("neo4j", "1234"), encrypted=False)
 
 session = graphdb.session()
+
 opcion=0
 print("-----------------------------------------")
 print("Bienvenido al sistema de recomendaciones")
 while(opcion != 6):
     print("1. Recomendar por rango de costos")
-    print("2. Recomendar por ubicacion")
+    print("2. Recomendar por servicio a domicilio")
     print("3. Recomendar por especialidad")
-    print("4. Recomendar por servicio a domicilio")
+    print("4. Recomendar por ubicacion")
     print("5. Recomendar por valoración")
     print("6. Salir")
     print("-----------------------------------------")
@@ -26,8 +27,13 @@ while(opcion != 6):
         print("Ingrese su precio a gastar: ")
         precio=float(input())
     elif(opcion==2):
-        print("En que zona se encuentra")
-        zona = input()
+        print("Estos tienen servicio")
+        
+        q1 = "MATCH(servicio {name: 'Si'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Los que tienen servicio son: ")
+        for node in nodes:
+            print(node[0])
         
     elif(opcion==3):
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -88,5 +94,19 @@ while(opcion != 6):
             
     elif(opcion==5):
         print("Valoracion")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("Ingrese la valoracion que desea: ")
+        print("1")
+        print("2")
+        print("3")
+        print("4")
+        print("5")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        valoracion = input()
+       
+        q1 = "MATCH(valoracion {name: '"+valoracion+"'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        for node in nodes:
+            print(node[0])
     else:
         print("FIN PROGRAMA")
