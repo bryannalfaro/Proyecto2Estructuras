@@ -1,4 +1,19 @@
+from neo4j import GraphDatabase
+
 #Programa principal de recomendaciones
+
+
+graphdb = GraphDatabase.driver(uri="neo4j://localhost:7687", auth= ("neo4j", "1234"), encrypted=False)
+
+session = graphdb.session()
+
+q1 = "MATCH (x) return (x)"
+
+nodes = session.run(q1)
+
+for node in nodes:
+    print(node)
+
 print("-----------------------------------------")
 print("Bienvenido al sistema de recomendaciones")
 
