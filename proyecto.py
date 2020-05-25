@@ -12,6 +12,10 @@ filtros_disponibles = ["Recomendar por rango de costos", "Recomendar por servici
                        "Recomendar por valoracion"]
 numeracion = 0
 
+#WITH lugar.valoracion as rating, lugar.name as l
+#RETURN l, rating
+#ORDER BY rating DESC
+
 opcion=0
 print("-----------------------------------------")
 print("Bienvenido al sistema de recomendaciones")
