@@ -40,6 +40,43 @@ elif(opcion==3):
     print("6. Comida china")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     especialidad=input()
+    if(especialidad=="1"):
+        q1 = "MATCH(especialidad {name: 'Comida Rapida'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Te recomendamos comer en: ")
+        for node in nodes:
+            print(node[0])
+    if(especialidad=="2"):
+        q1 = "MATCH(especialidad {name: 'Ensalada'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Te recomendamos comer en: ")
+        for node in nodes:
+            print(node[0])
+    if(especialidad=="3"):
+        q1 = "MATCH(especialidad {name: 'Carnes'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Te recomendamos comer en: ")
+        for node in nodes:
+            print(node[0])
+    if(especialidad=="4"):
+        q1 = "MATCH(especialidad {name: 'Pizzas'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Te recomendamos comer en: ")
+        for node in nodes:
+            print(node[0])
+    if(especialidad=="5"):
+        q1 = "MATCH(especialidad {name: 'Postres'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Te recomendamos comer en: ")
+        for node in nodes:
+            print(node[0])
+            
+    if(especialidad=="6"):
+        q1 = "MATCH(especialidad {name: 'Comida China'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Te recomendamos comer en: ")
+        for node in nodes:
+            print(node[0])
     
 elif(opcion==4):
     print("En que zona te encuentras: ")
