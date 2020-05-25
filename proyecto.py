@@ -7,12 +7,12 @@ graphdb = GraphDatabase.driver(uri="neo4j://localhost:7687", auth= ("neo4j", "12
 
 session = graphdb.session()
 
-q1 = "MATCH (x) return (x)"
+q1 = "MATCH(especialidad {name: 'Pizzas'}) <-- (lugar) MATCH(zona {name: 'Zona 8'}) <-- (lugar) RETURN lugar"
 
 nodes = session.run(q1)
 
 for node in nodes:
-    print(node)
+    print(node[0])
 
 print("-----------------------------------------")
 print("Bienvenido al sistema de recomendaciones")
