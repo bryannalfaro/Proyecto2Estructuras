@@ -44,11 +44,8 @@ elif(opcion==3):
 elif(opcion==4):
     print("En que zona te encuentras: ")
     zonaUsuario= input()
-    
     q1 = "MATCH(zona {name: 'Zona " +zonaUsuario+"'}) <-- (lugar) RETURN lugar.name"
-    print(q1)
     nodes = session.run(q1)
-
     for node in nodes:
         print(node[0])
         
