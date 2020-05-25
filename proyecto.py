@@ -25,7 +25,34 @@ while(opcion != 6):
         
     if(opcion==1):
         print("Ingrese su precio a gastar: ")
-        precio=float(input())
+        
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("1. 10-150")
+        print("2. 150-300")
+        print("3. 300-500")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        
+        precio = int(input())
+        
+        if(precio==1):
+            q1 = "MATCH(precio {name: '10-150'}) <-- (lugar) RETURN lugar.name"
+            nodes = session.run(q1)
+            print("Los que estan en tu rango de precio son: ")
+            for node in nodes:
+                print(node[0])
+        if(precio==2):
+            q1 = "MATCH(precio {name: '150-300'}) <-- (lugar) RETURN lugar.name"
+            nodes = session.run(q1)
+            print("Los que estan en tu rango de precio son: ")
+            for node in nodes:
+                print(node[0])
+        if(precio==3):
+            q1 = "MATCH(precio {name: '300-500'}) <-- (lugar) RETURN lugar.name"
+            nodes = session.run(q1)
+            print("Los que estan en tu rango de precio son: ")
+            for node in nodes:
+                print(node[0])
+        
     elif(opcion==2):
         print("Estos tienen servicio")
         
