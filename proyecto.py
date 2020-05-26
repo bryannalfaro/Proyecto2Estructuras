@@ -16,6 +16,14 @@ numeracion = 0
 #RETURN l, rating
 #ORDER BY rating DESC
 
+def sendQuery(query):
+    query +=' WITH lugar.valoracion as rating, lugar.name as l RETURN l, rating ORDER BY rating DESC'
+    print(query)
+    nodes = session.run(q1)
+    for node in nodes:
+        print(node[0])    
+
+
 opcion=0
 print("-----------------------------------------")
 print("Bienvenido al sistema de recomendaciones")
@@ -57,45 +65,9 @@ while(opcion != 6):
         
             if(precio==1):
                 q1 = "MATCH(precio {name: '10-150'}) <-- (lugar) RETURN lugar.name"
-                nodes = session.run(q1)
                 print("Los que estan en tu rango de precio son: ")
-                for node in nodes:
-                    print(node[0])
-            if(precio==2):
-                q1 = "MATCH(precio {name: '150-300'}) <-- (lugar) RETURN lugar.name"
-                nodes = session.run(q1)
-                print("Los que estan en tu rango de precio son: ")
-                for node in nodes:
-                    print(node[0])
-            if(precio==3):
-                q1 = "MATCH(precio {name: '300-500'}) <-- (lugar) RETURN lugar.name"
-                nodes = session.run(q1)
-                print("Los que estan en tu rango de precio son: ")
-                for node in nodes:
-                    print(node[0])
-            
-        
-    elif(opcion==2):
-        print("Estos tienen servicio")
-        
-        q1 = "MATCH(servicio {name: 'Si'}) <-- (lugar) RETURN lugar.name"
-        nodes = session.run(q1)
-        print("Los que tienen servicio son: ")
-        for node in nodes:
-            print(node[0])
-        
-    elif(opcion==3):
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("Ingrese su especialidad: ")
-        print("1. Comida rápida")
-        print("2. Ensaladas")
-        print("3. Carnes")
-        print("4. Pizzas")
-        print("5. Postres")
-        print("6. Comida china")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        especialidad=input()
-        if(especialidad=="1"):
+                sendQuery(q1)
+                
             q1 = "MATCH(especialidad {name: 'Comida Rapida'}) <-- (lugar) RETURN lugar.name"
             nodes = session.run(q1)
             print("Te recomendamos comer en: ")
@@ -161,4 +133,3 @@ while(opcion != 6):
         print("FIN PROGRAMA")
         
         
-
