@@ -22,77 +22,80 @@ def sendQuery(query):
         print(node[0] + " " + stars)
 
 opcion=0
-print("-----------------------------------------")
-print("Bienvenido al sistema de recomendaciones")
+print("--------------------------------------------")
+print("| Bienvenido al sistema de recomendaciones |")
+print("--------------------------------------------")
 while(opcion != 6):
-    print("1. Recomendar por rango de costos")
-    print("2. Recomendar por servicio a domicilio")
-    print("3. Recomendar por especialidad")
-    print("4. Recomendar por ubicacion")
-    print("5. Recomendar por valoración")
-    print("6. Salir")
-    print("-----------------------------------------")
+    print("\n--------------------------------------------")
+    print("| 1. Recomendar por rango de costos        |")
+    print("| 2. Recomendar por servicio a domicilio   |")
+    print("| 3. Recomendar por especialidad           |")
+    print("| 4. Recomendar por ubicacion              |")
+    print("| 5. Recomendar por valoración             |")
+    print("| 6. Salir                                 |")
+    print("--------------------------------------------")
     try:
-        opcion = int(input()) 
+        print("\nIngresa la opción de la recomendación que deseas:")
+        opcion = int(input("---> ")) 
     except:
         print("Error ingresaste mal una opcion")
         
     if(opcion==1):
-        print("Ingrese su precio a gastar: ")
+        print("\nUsted a seleccionado: Recomendar por rango de costo")
+        print("Ingrese el rango de dinero que desea gastar: ")
         
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("1. 10-150")
-        print("2. 150-300")
-        print("3. 300-500")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("| 1. Q10 - Q150         |")
+        print("| 2. Q150 - Q300        |")
+        print("| 3. Q300 - Q500        |")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~")
         
-        precio = int(input())
+        precio = int(input("---> "))
         
         if(precio==1):
             q1 = "MATCH(precio {name: '10-150'}) <-- (lugar)"
-            print("Los que estan en tu rango de precio son: ")
+            print("Los que estan en tu rango de precio son: \n")
             sendQuery(q1)
             
         if(precio==2):
             q1 = "MATCH(precio {name: '150-300'}) <-- (lugar)"
-            print("Los que estan en tu rango de precio son: ")
+            print("Los que estan en tu rango de precio son: \n")
             sendQuery(q1)
             
         if(precio==3):
             q1 = "MATCH(precio {name: '300-500'}) <-- (lugar)"
-            print("Los que estan en tu rango de precio son: ")
+            print("Los que estan en tu rango de precio son: \n")
             sendQuery(q1)
         
     elif(opcion==2):
-        print("Estos tienen servicio")
+        print("Listado de restaurantes con servicio a domicilio: \n")
         q1 = "MATCH(servicio {name: 'Si'}) <-- (lugar)"
-        print("Los que tienen servicio son: ")
         sendQuery(q1)
         
     elif(opcion==3):
+        print("Ingrese la especialidad que desea: ")
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("Ingrese su especialidad: ")
-        print("1. Comida rápida")
-        print("2. Ensaladas")
-        print("3. Carnes")
-        print("4. Pizzas")
-        print("5. Postres")
-        print("6. Comida china")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        especialidad=input()
+        print("| 1. Comida rápida       |")
+        print("| 2. Ensaladas           |")
+        print("| 3. Carnes              |")
+        print("| 4. Pizzas              |")
+        print("| 5. Postres             |")
+        print("| 6. Comida china        |")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        especialidad = input("---> ")
         if(especialidad=="1"):
             q1 = "MATCH(especialidad {name: 'Comida Rapida'}) <-- (lugar)"
-            print("Te recomendamos comer en: ")
+            print("Te recomendamos comer en: \n")
             sendQuery(q1)
             
         if(especialidad=="2"):
             q1 = "MATCH(especialidad {name: 'Ensalada'}) <-- (lugar)"
-            print("Te recomendamos comer en: ")
+            print("Te recomendamos comer en: \n")
             sendQuery(q1)
             
         if(especialidad=="3"):
             q1 = "MATCH(especialidad {name: 'Carnes'}) <-- (lugar)"
-            print("Te recomendamos comer en: ")
+            print("Te recomendamos comer en: \n")
             sendQuery(q1)
             
         if(especialidad=="4"):
@@ -132,7 +135,7 @@ while(opcion != 6):
         q1 = "MATCH(valoracion {name: '"+valoracion+"'}) <-- (lugar)"
         sendQuery(q1)
     else:
-        print("FIN PROGRAMA")
+        print("Gracias por utilizar el programa.")
         
         
 
