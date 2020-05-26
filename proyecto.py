@@ -7,10 +7,6 @@ graphdb = GraphDatabase.driver(uri="neo4j://localhost:7687", auth= ("neo4j", "12
 
 session = graphdb.session()
 
-menu_filtros = "Desea utilizar otro filtro?\n1. Si\n2. No"
-filtros_disponibles = ["Recomendar por rango de costos", "Recomendar por servicio a domicilio", "Recomendar por especialidad", "Recomendar por ubicación",
-                       "Recomendar por valoracion"]
-numeracion = 0
 
 #WITH lugar.valoracion as rating, lugar.name as l
 #RETURN l, rating
@@ -50,35 +46,26 @@ while(opcion != 6):
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         
         precio = int(input())
-        print(menu_filtros)
-        opcion_filtro = int(input())
-        
-        if(opcion_filtro == 1):
-            filtros_disponibles.remove("Recomendar por rango de costos")
-            for item in filtros_disponibles:
-                numeracion = numeracion + 1
-                print(str(numeracion) + ". " + item)
-            opcion_filtrado = int(input())
+
+
+        if(precio==1):
+            q1 = "MATCH(precio {name: '10-150'}) <-- (lugar) RETURN lugar.name"
+            print("Los que estan en tu rango de precio son: ")
+            sendQuery(q1)
             
-        else:
-        
-        
-            if(precio==1):
-                q1 = "MATCH(precio {name: '10-150'}) <-- (lugar) RETURN lugar.name"
-                print("Los que estan en tu rango de precio son: ")
-                sendQuery(q1)
-                
-            q1 = "MATCH(especialidad {name: 'Comida Rapida'}) <-- (lugar) RETURN lugar.name"
-            nodes = session.run(q1)
-            print("Te recomendamos comer en: ")
-            for node in nodes:
-                print(node[0])
+        q1 = "MATCH(especialidad {name: 'Comida Rapida'}) <-- (lugar) RETURN lugar.name"
+        nodes = session.run(q1)
+        print("Te recomendamos comer en: ")
+        for node in nodes:
+            print(node[0])
+            
         if(especialidad=="2"):
             q1 = "MATCH(especialidad {name: 'Ensalada'}) <-- (lugar) RETURN lugar.name"
             nodes = session.run(q1)
             print("Te recomendamos comer en: ")
             for node in nodes:
                 print(node[0])
+                
         if(especialidad=="3"):
             q1 = "MATCH(especialidad {name: 'Carnes'}) <-- (lugar) RETURN lugar.name"
             nodes = session.run(q1)
