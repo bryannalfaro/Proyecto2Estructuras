@@ -12,10 +12,23 @@ session = graphdb.session()
 #RETURN l, rating
 #ORDER BY rating DESC
 
+#MATCH(especialidad {name: 'Postres'}) <-[arista]-(lugar) 
+#WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso
+#WHERE peso <> 1
+#RETURN l, rating, peso 
+#ORDER BY peso DESC
+
 def sendQuery(query):
     query += " WITH lugar.valoracion as rating, lugar.name as l RETURN l, rating ORDER BY rating DESC"
     nodes = session.run(query)
     for node in nodes:
+        stars = ''
+        for r in range (0, int(node[1])):
+            stars += '✰'
+        print(node[0] + " " + stars)
+    query += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso <> 1 RETURN l, rating, peso ORDER BY peso DESC"
+        nodesRec = session.run(query)
+    for node in nodesRec:
         stars = ''
         for r in range (0, int(node[1])):
             stars += '✰'
