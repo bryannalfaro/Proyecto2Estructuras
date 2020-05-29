@@ -22,6 +22,7 @@ def sendQuery(query):
         print(node[0] + " " + stars)
 
 opcion=0
+
 print("-----------------------------------------")
 print("Bienvenido al sistema de recomendaciones")
 while(opcion != 6):
@@ -29,7 +30,7 @@ while(opcion != 6):
     print("2. Recomendar por servicio a domicilio")
     print("3. Recomendar por especialidad")
     print("4. Recomendar por ubicacion")
-    print("5. Recomendar por valoración")
+
     print("6. Salir")
     print("-----------------------------------------")
     try:
@@ -117,20 +118,6 @@ while(opcion != 6):
         q1 = "MATCH(zona {name: 'Zona " +zonaUsuario+"'}) <-- (lugar)"
         sendQuery(q1)
             
-    elif(opcion==5):
-        print("Valoracion")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("Ingrese la valoracion que desea: ")
-        print("1")
-        print("2")
-        print("3")
-        print("4")
-        print("5")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        valoracion = input()
-       
-        q1 = "MATCH(valoracion {name: '"+valoracion+"'}) <-- (lugar)"
-        sendQuery(q1)
     else:
         print("FIN PROGRAMA")
         
