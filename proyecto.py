@@ -7,17 +7,6 @@ graphdb = GraphDatabase.driver(uri="neo4j://localhost:7687", auth= ("neo4j", "12
 
 session = graphdb.session()
 
-
-#WITH lugar.valoracion as rating, lugar.name as l
-#RETURN l, rating
-#ORDER BY rating DESC
-
-#MATCH(especialidad {name: 'Postres'}) <-[arista]-(lugar) 
-#WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso
-#WHERE peso <> 1
-#RETURN l, rating, peso 
-#ORDER BY peso DESC
-
 def sendQuery(query):
     temp = query
     query += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso = 1 RETURN l, rating ORDER BY rating DESC"
@@ -145,9 +134,3 @@ while(opcion != 6):
     elif(opcion==5):
         print("Gracias por utilizar el programa.")
         break
-        
-        
-        
-
-
-
