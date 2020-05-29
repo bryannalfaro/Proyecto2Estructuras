@@ -26,8 +26,9 @@ def sendQuery(query):
         for r in range (0, int(node[1])):
             stars += '✰'
         print(node[0] + " " + stars)
-    query += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso <> 1 RETURN l, rating, peso ORDER BY peso DESC"
-        nodesRec = session.run(query)
+    query += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso <> 1 RETURN l, rating, peso ORDER BY peso DESC LIMIT 4"
+    nodesRec = session.run(query)
+    print("Pero tambien le recomendamos estos restaurantes:")
     for node in nodesRec:
         stars = ''
         for r in range (0, int(node[1])):
