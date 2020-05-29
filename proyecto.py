@@ -35,6 +35,15 @@ def sendQuery(query):
         for r in range (0, int(node[1])):
             stars += '✰'
         print(node[0] + " " + stars)
+        
+def sendQuerySimple(query):
+    query += " WITH lugar.valoracion as rating, lugar.name as l RETURN l, rating ORDER BY rating DESC"
+    nodes = session.run(query)
+    for node in nodes:
+        stars = ''
+        for r in range (0, int(node[1])):
+            stars += '✰'
+        print(node[0] + " " + stars)
 
 opcion=0
 print("--------------------------------------------")
@@ -84,7 +93,7 @@ while(opcion != 6):
     elif(opcion==2):
         print("Listado de restaurantes con servicio a domicilio: \n")
         q1 = "MATCH(servicio {name: 'Si'}) <-[arista]- (lugar)"
-        sendQuery(q1)
+        sendQuerySimple(q1)
         
     elif(opcion==3):
         print("Ingrese la especialidad que desea: ")
@@ -123,8 +132,7 @@ while(opcion != 6):
             sendQuery(q1)
                 
         if(especialidad=="6"):
-            q1 = "MATCH(especialidad {name: 'Comida China'}) <-- (lugar)"
-            nodes = session.run(q1)
+            q1 = "MATCH(especialidad {name: 'Comida China'}) <-[arista]- (lugar)"
             print("Te recomendamos comer en: ")
             sendQuery(q1)
         
@@ -132,7 +140,7 @@ while(opcion != 6):
         print("En que zona te encuentras: ")
         zonaUsuario= input()
         q1 = "MATCH(zona {name: 'Zona " +zonaUsuario+"'}) <-[arista]- (lugar)"
-        sendQuery(q1)
+        sendQuerySimple(q1)
     
     elif(opcion==5):
         print("Gracias por utilizar el programa.")
