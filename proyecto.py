@@ -2,11 +2,11 @@ from neo4j import GraphDatabase
 
 #Programa principal de recomendaciones
 
-
+#Conexión con la base de datos
 graphdb = GraphDatabase.driver(uri="neo4j://localhost:7687", auth= ("neo4j", "1234"), encrypted=False)
-
 session = graphdb.session()
 
+#Funciones para filtrar recomendaciones por su valoracion y por su peso
 def sendQuery(query):
     temp = query
     query += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso = 1 RETURN l, rating ORDER BY rating DESC"
@@ -24,6 +24,7 @@ def sendQuery(query):
         for r in range (0, int(node[1])):
             stars += '✰'
         print(node[0] + " " + stars)
+    enter = input("Presione la tecla Enter para continuar: ")
         
 def sendQuerySimple(query):
     query += " WITH lugar.valoracion as rating, lugar.name as l RETURN l, rating ORDER BY rating DESC"
@@ -33,12 +34,16 @@ def sendQuerySimple(query):
         for r in range (0, int(node[1])):
             stars += '✰'
         print(node[0] + " " + stars)
+    enter = input("Presione la tecla Enter para continuar: ")
 
+#Menu principal
 opcion=0
 print("--------------------------------------------")
 print("| Bienvenido al sistema de recomendaciones |")
 print("--------------------------------------------")
-while(opcion != 6):
+
+#Ciclo de opciones
+while(opcion != 5):
     print("\n--------------------------------------------")
     print("| 1. Recomendar por rango de costos        |")
     print("| 2. Recomendar por servicio a domicilio   |")
@@ -46,12 +51,14 @@ while(opcion != 6):
     print("| 4. Recomendar por ubicacion              |")
     print("| 5. Salir                                 |")
     print("--------------------------------------------")
+    #Programación defensiva
     try:
         print("\nIngresa la opción de la recomendación que deseas:")
         opcion = int(input("---> ")) 
     except:
         print("Error ingresaste mal una opcion")
         
+    #Opción de rango de costos
     if(opcion==1):
         print("\nUsted a seleccionado: Recomendar por rango de costo")
         print("Ingrese el rango de dinero que desea gastar: ")
@@ -79,11 +86,13 @@ while(opcion != 6):
             print("Los que estan en tu rango de precio son: \n")
             sendQuery(q1)
         
+    #Filtrar por servicio a domicilio
     elif(opcion==2):
         print("Listado de restaurantes con servicio a domicilio: \n")
         q1 = "MATCH(servicio {name: 'Si'}) <-[arista]- (lugar)"
         sendQuerySimple(q1)
         
+    #Recomendar por especialidad
     elif(opcion==3):
         print("Ingrese la especialidad que desea: ")
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -125,6 +134,7 @@ while(opcion != 6):
             print("Te recomendamos comer en: ")
             sendQuery(q1)
         
+    #Filtrar restaurantes por zonas
     elif(opcion==4):
         print("En que zona te encuentras: ")
         zonaUsuario= input()
@@ -134,3 +144,5 @@ while(opcion != 6):
     elif(opcion==5):
         print("Gracias por utilizar el programa.")
         break
+    else:
+        print("Opcion no válida")
