@@ -118,9 +118,11 @@ while(opcion != 6):
         zonaUsuario= input()
         q1 = "MATCH(zona {name: 'Zona " +zonaUsuario+"'}) <-- (lugar)"
         sendQuery(q1)
-            
-    else:
+    
+    elif(opcion==5):
         print("Gracias por utilizar el programa.")
+        break
+        
         
         
 
