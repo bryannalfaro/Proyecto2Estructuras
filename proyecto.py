@@ -19,15 +19,16 @@ session = graphdb.session()
 #ORDER BY peso DESC
 
 def sendQuery(query):
-    query += " WITH lugar.valoracion as rating, lugar.name as l RETURN l, rating ORDER BY rating DESC"
+    temp = query
+    query += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso = 1 RETURN l, rating ORDER BY rating DESC"
     nodes = session.run(query)
     for node in nodes:
         stars = ''
         for r in range (0, int(node[1])):
             stars += '✰'
         print(node[0] + " " + stars)
-    query += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso <> 1 RETURN l, rating, peso ORDER BY peso DESC LIMIT 4"
-    nodesRec = session.run(query)
+    temp += " WITH lugar.valoracion as rating, lugar.name as l, arista.relacion as peso WHERE peso <> 1 RETURN l, rating, peso ORDER BY peso DESC LIMIT 4"
+    nodesRec = session.run(temp)
     print("Pero tambien le recomendamos estos restaurantes:")
     for node in nodesRec:
         stars = ''
@@ -66,23 +67,23 @@ while(opcion != 6):
         precio = int(input("---> "))
         
         if(precio==1):
-            q1 = "MATCH(precio {name: '10-150'}) <-- (lugar)"
+            q1 = "MATCH(precio {name: '10-150'}) <-[arista]- (lugar)"
             print("Los que estan en tu rango de precio son: \n")
             sendQuery(q1)
             
         if(precio==2):
-            q1 = "MATCH(precio {name: '150-300'}) <-- (lugar)"
+            q1 = "MATCH(precio {name: '150-300'}) <-[arista]- (lugar)"
             print("Los que estan en tu rango de precio son: \n")
             sendQuery(q1)
             
         if(precio==3):
-            q1 = "MATCH(precio {name: '300-500'}) <-- (lugar)"
+            q1 = "MATCH(precio {name: '300-500'}) <-[arista]- (lugar)"
             print("Los que estan en tu rango de precio son: \n")
             sendQuery(q1)
         
     elif(opcion==2):
         print("Listado de restaurantes con servicio a domicilio: \n")
-        q1 = "MATCH(servicio {name: 'Si'}) <-- (lugar)"
+        q1 = "MATCH(servicio {name: 'Si'}) <-[arista]- (lugar)"
         sendQuery(q1)
         
     elif(opcion==3):
@@ -97,27 +98,27 @@ while(opcion != 6):
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
         especialidad = input("---> ")
         if(especialidad=="1"):
-            q1 = "MATCH(especialidad {name: 'Comida Rapida'}) <-- (lugar)"
+            q1 = "MATCH(especialidad {name: 'Comida Rapida'}) <-[arista]- (lugar)"
             print("Te recomendamos comer en: \n")
             sendQuery(q1)
             
         if(especialidad=="2"):
-            q1 = "MATCH(especialidad {name: 'Ensalada'}) <-- (lugar)"
+            q1 = "MATCH(especialidad {name: 'Ensalada'}) <-[arista]- (lugar)"
             print("Te recomendamos comer en: \n")
             sendQuery(q1)
             
         if(especialidad=="3"):
-            q1 = "MATCH(especialidad {name: 'Carnes'}) <-- (lugar)"
+            q1 = "MATCH(especialidad {name: 'Carnes'}) <-[arista]- (lugar)"
             print("Te recomendamos comer en: \n")
             sendQuery(q1)
             
         if(especialidad=="4"):
-            q1 = "MATCH(especialidad {name: 'Pizzas'}) <-- (lugar)"
+            q1 = "MATCH(especialidad {name: 'Pizzas'}) <-[arista]- (lugar)"
             print("Te recomendamos comer en: ")
             sendQuery(q1)
             
         if(especialidad=="5"):
-            q1 = "MATCH(especialidad {name: 'Postres'}) <-- (lugar)"
+            q1 = "MATCH(especialidad {name: 'Postres'}) <-[arista]- (lugar)"
             print("Te recomendamos comer en: ")
             sendQuery(q1)
                 
@@ -130,7 +131,7 @@ while(opcion != 6):
     elif(opcion==4):
         print("En que zona te encuentras: ")
         zonaUsuario= input()
-        q1 = "MATCH(zona {name: 'Zona " +zonaUsuario+"'}) <-- (lugar)"
+        q1 = "MATCH(zona {name: 'Zona " +zonaUsuario+"'}) <-[arista]- (lugar)"
         sendQuery(q1)
     
     elif(opcion==5):
