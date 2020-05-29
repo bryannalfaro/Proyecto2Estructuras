@@ -67,7 +67,7 @@ create (si:servicio {name:"Si"});
 create (no:servicio {name:"No"});
 
 //Match Nodes
-
+//--------------------------------------------------------------------------------------------
 //Restaurante -> cerca de -> Zona
 match(a:lugar), (b:zona)
 where a.name = "PizzaHut" AND b.name = "Zona 2"
@@ -254,8 +254,6 @@ where a.name = "DominosPizza" AND b.name = "Zona 22"
 create(a)-[:cerca_de]->(b)
 return a,b;
 
-
-
 match(a:lugar), (b:zona)
 where a.name = "DominosPizza" AND b.name = "Zona 7"
 create(a)-[:cerca_de]->(b)
@@ -271,127 +269,298 @@ where a.name = "TacoBell" AND b.name = "Zona 12"
 create(a)-[:cerca_de]->(b)
 return a,b;
 
-
-//--------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 //Restaurante -> esta en el rango de -> Precio
 match(a:lugar), (b:precio)
+where a.name = "PizzaHut" AND b.name = "10-150"
+create(a)-[:precio_de {relacion: 0.3}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
 where a.name = "PizzaHut" AND b.name = "150-300"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "PizzaHut" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.7}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "DominosPizza" AND b.name = "10-150"
+create(a)-[:precio_de {relacion: 0.2}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "DominosPizza" AND b.name = "150-300"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "DominosPizza" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.8}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "GoGreen" AND b.name = "10-150"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "GoGreen" AND b.name = "150-300"
+create(a)-[:precio_de {relacion: 0.5}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "GoGreen" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.2}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "McDonalds" AND b.name = "10-150"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "McDonalds" AND b.name = "150-300"
+create(a)-[:precio_de {relacion: 0.7}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "McDonalds" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.4}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "TacoBell" AND b.name = "10-150"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "TacoBell" AND b.name = "150-300"
+create(a)-[:precio_de {relacion: 0.7}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "TacoBell" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.3}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "BurgerKing" AND b.name = "10-150"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "BurgerKing" AND b.name = "150-300"
+create(a)-[:precio_de {relacion: 0.6}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "BurgerKing" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.6}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "LaEstancia" AND b.name = "10-150"
+create(a)-[:precio_de {relacion: 0.3}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "LaEstancia" AND b.name = "150-300"
+create(a)-[:precio_de {relacion: 0.6}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "LaEstancia" AND b.name = "300-500"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "PapaJohns" AND b.name = "10-150"
+create(a)-[:precio_de {relacion: 0.4}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "PapaJohns" AND b.name = "150-300"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "PapaJohns" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.7}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "Saul" AND b.name = "10-150"
+create(a)-[:precio_de {relacion: 0.4}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "Saul" AND b.name = "150-300"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "Saul" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.8}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "PolloCampero" AND b.name = "10-150"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "PolloCampero" AND b.name = "150-300"
+create(a)-[:precio_de {relacion: 0.6}]->(b)
+return a,b;
+
+match(a:lugar), (b:precio)
+where a.name = "PolloCampero" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.4}]->(b)
 return a,b;
 
 match(a:lugar), (b:precio)
 where a.name = "LittleCaesars" AND b.name = "10-150"
-create(a)-[:precio_de]->(b)
+create(a)-[:precio_de {relacion: 0.4}]->(b)
 return a,b;
 
+match(a:lugar), (b:precio)
+where a.name = "LittleCaesars" AND b.name = "150-300"
+create(a)-[:precio_de {relacion: 1}]->(b)
+return a,b;
 
+match(a:lugar), (b:precio)
+where a.name = "LittleCaesars" AND b.name = "300-500"
+create(a)-[:precio_de {relacion: 0.7}]->(b)
+return a,b;
+
+//--------------------------------------------------------------------------------------------
 //Restaurante -> su especialidad es -> Especialidad
 
 match(a:lugar), (b:especialidad)
 where a.name = "PizzaHut" AND b.name = "Pizzas"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "PizzaHut" AND b.name = "Comida Rapida"
+create(a)-[:especialidad_de {relacion: 0.8}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "GoGreen" AND b.name = "Ensalada"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "GoGreen" AND b.name = "Comida Rapida"
+create(a)-[:especialidad_de {relacion: 0.5}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "McDonalds" AND b.name = "Comida Rapida"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "McDonalds" AND b.name = "Ensalada"
+create(a)-[:especialidad_de {relacion: 0.7}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "TacoBell" AND b.name = "Comida Rapida"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "TacoBell" AND b.name = "Postres"
+create(a)-[:especialidad_de {relacion: 0.6}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "BurgerKing" AND b.name = "Comida Rapida"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
+where a.name = "BurgerKing" AND b.name = "Postres"
+create(a)-[:especialidad_de {relacion: 0.8}]->(b)
+return a,b;
+
+
+match(a:lugar), (b:especialidad)
 where a.name = "LaEstancia" AND b.name = "Carnes"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "LaEstancia" AND b.name = "Postres"
+create(a)-[:especialidad_de {relacion: 0.8}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "PapaJohns" AND b.name = "Pizzas"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "PapaJohns" AND b.name = "Postres"
+create(a)-[:especialidad_de {relacion: 0.7}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "Saul" AND b.name = "Postres"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "Saul" AND b.name = "Pizzas"
+create(a)-[:especialidad_de {relacion: 0.7}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "PolloCampero" AND b.name = "Comida Rapida"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "PolloCampero" AND b.name = "Pizzas"
+create(a)-[:especialidad_de {relacion: 0.8}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "Panda" AND b.name = "Comida China"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "Panda" AND b.name = "Postres"
+create(a)-[:especialidad_de {relacion: 0.6}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "LittleCaesars" AND b.name = "Pizzas"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
+return a,b;
+
+match(a:lugar), (b:especialidad)
+where a.name = "LittleCaesars" AND b.name = "Postres"
+create(a)-[:especialidad_de {relacion: 0.8}]->(b)
 return a,b;
 
 match(a:lugar), (b:especialidad)
 where a.name = "DominosPizza" AND b.name = "Pizzas"
-create(a)-[:especialidad_de]->(b)
+create(a)-[:especialidad_de {relacion: 1}]->(b)
 return a,b;
 
+match(a:lugar), (b:especialidad)
+where a.name = "DominosPizza" AND b.name = "Pizzas"
+create(a)-[:especialidad_de {relacion: 0.8}]->(b)
+return a,b;
+
+//--------------------------------------------------------------------------------------------
 //Restaurante -> presenta servicio domicilio -> Domicilio 
 
 match(a:lugar), (b:servicio)
