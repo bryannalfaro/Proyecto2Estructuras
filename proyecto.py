@@ -1,6 +1,10 @@
 from neo4j import GraphDatabase
 
 #Programa principal de recomendaciones
+#Integrantes:
+#Bryann Alfaro
+#Diego Arredondo
+#Oscar Saravia
 
 #Conexión con la base de datos
 graphdb = GraphDatabase.driver(uri="neo4j://localhost:7687", auth= ("neo4j", "1234"), encrypted=False)
