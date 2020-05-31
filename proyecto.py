@@ -43,13 +43,14 @@ print("| Bienvenido al sistema de recomendaciones |")
 print("--------------------------------------------")
 
 #Ciclo de opciones
-while(opcion != 5):
+while(opcion != 6):
     print("\n--------------------------------------------")
     print("| 1. Recomendar por rango de costos        |")
     print("| 2. Recomendar por servicio a domicilio   |")
     print("| 3. Recomendar por especialidad           |")
     print("| 4. Recomendar por ubicacion              |")
-    print("| 5. Salir                                 |")
+    print("| 5. Agregar o eliminar restaurantes       |")
+    print("| 6. Salir                                 |")
     print("--------------------------------------------")
     #Programación defensiva
     try:
@@ -140,8 +141,26 @@ while(opcion != 5):
         zonaUsuario= input()
         q1 = "MATCH(zona {name: 'Zona " +zonaUsuario+"'}) <-[arista]- (lugar)"
         sendQuerySimple(q1)
-    
     elif(opcion==5):
+        print("1. Agregar un restaurante")
+        print("2. Eliminar un restaurante")
+        opcion3 = int(input("---> "))
+        if(opcion3==1):
+            nombre = input("Ingresa el nombre del restaurante: ")
+            especialidad = input("Ingrese la especialidad: ")
+            rating = int(input("Ingrese el rating: "))
+            zona = int(input("Ingrese la zona en la que esta ubicado: "))
+            print("Restaurante agregado")
+        elif(opcion3==2):
+            eliminarrestaurante = input("Ingrese el nombre del restaurante que desea eliminar: ")
+            "MATCH(a:lugar{name:'"+eliminarrestaurante+"'})"
+            "DETACH DELETE a"
+            print("Restaurante eliminado")
+        else:
+            print("Opción no válida")
+    
+    
+    elif(opcion==6):
         print("Gracias por utilizar el programa.")
         break
     else:
