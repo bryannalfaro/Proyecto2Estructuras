@@ -148,13 +148,13 @@ while(opcion != 6):
         if(opcion3==1):
             nombre = input("Ingresa el nombre del restaurante: ")
             especialidad = input("Ingrese la especialidad: ")
-            rating = int(input("Ingrese el rating: "))
-            zona = int(input("Ingrese la zona en la que esta ubicado: "))
+            rating = input("Ingrese el rating: ")
+            zona = input("Ingrese la zona en la que esta ubicado: ")
+            session.run("CREATE("+nombre+":lugar {name:'"+ nombre +"', valoracion:"+rating+"});")
             print("Restaurante agregado")
         elif(opcion3==2):
             eliminarrestaurante = input("Ingrese el nombre del restaurante que desea eliminar: ")
-            "MATCH(a:lugar{name:'"+eliminarrestaurante+"'})"
-            "DETACH DELETE a"
+            session.run("MATCH(a:lugar{name:'"+eliminarrestaurante+"'}) DETACH DELETE a")            
             print("Restaurante eliminado")
         else:
             print("Opción no válida")
